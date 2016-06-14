@@ -1,0 +1,729 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Adapted from :http://web.mit.edu/8.13/samplepaper/sample-paper.tex
+% Which was adapted from the American Physical Societies REVTeK-4 Pages
+% at http://publish.aps.org
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[aps,secnumarabic,nobalancelastpage,amsmath,amssymb,
+nofootinbib]{revtex4}
+
+\usepackage{graphics}      % standard graphics specifications
+\usepackage{graphicx}      % alternative graphics specifications
+\usepackage{longtable}     % helps with long table options
+\usepackage{url}               % for on-line citations
+\usepackage{bm}              % special 'bold-math' package
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+
+\usepackage{titlesec}
+\usepackage{relsize}
+\titlelabel{\larger\larger\thetitle\quad\aftergroup\larger\aftergroup\larger}
+\newcommand{\Lagr}{\mathcal{L}}
+\usepackage{mathbbol}
+
+%\usepackage{etoolbox}
+%\patchcmd{\section}
+%  {\centering}
+%  {\raggedright}
+%  {}
+%  {}
+%\patchcmd{\subsection}
+%  {\centering}
+%  {\raggedright}
+%  {}
+%  {}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\large
+\title{\LARGE QFT, GR, and Holography Notes 2016 \vspace{3mm}}
+
+\author         {Erin Blauvelt}
+%\email          {ekb215@lehigh.edu}
+\affiliation    {\large Lehigh Department of Physics}
+%\date{\today}
+
+\begin{abstract}
+My notes from the summer research session 2016, supervised by Dr. Sera Cremonini. This summer was spent working alongside students Anthony Hoover and Steven Waskie.
+\vspace{1mm}
+\end{abstract}
+\maketitle
+%% getting rid of numbers before section
+%\makeatletter
+%\def\@seccntformat#1{%
+%  \expandafter\ifx\csname c@#1\endcsname\c@section\else
+%  \csname the#1\endcsname\quad
+%  \fi}
+%\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\hspace{1cm}
+
+%\clearpage
+
+\begin{center}
+\textbf{\Large Chapter 1: Quantum Field Theory}
+\end{center}
+\indent \indent Within the framework of Quantum field theory (QFT), particles are viewed as excitations of the field, instead of being fundamental in and of themselves. The basic process to develop a QFT begins with quantizing a feild. The infamous debut example of a quantum field theory quantizes the electromagnetic field, which has been aptly named Quantum electrodynamics (QED). QFT is applicable in many different experimental situations, from particle collisions in high energy physics (HEP) to superconductors in condensed matter (CM).
+\\\\
+\noindent \textit{Why do we need quantum field theory?}
+\\\\
+\indent need to be able to describe the destruction and production of particles. Particle number is not conserved.\\
+Give negative energy issue...
+
+\indent Action at a distance has proven to be a problematic assumption to develop a theory under (find example). Instead of action at a distance, it is thought that objects can only be influenced by their immediate surroundings (locality). This need for locality prompted a need for something to mediate spatially seperated interactions, such as fields. It would seem natural then to seek out  a local lagrangian to describe quantum mechanics. 
+
+Quantum mechanics without feild thoery is not relativistic. QFT, thorugh the incorporation of feilds, is able to produce a relativistic model of quantum mechanics.\\\\
+%An "ITS HARD" quote
+%More specifically QED  has given gives us predictions for... magnetic moment of electron
+%QCD and other flavors -- How CM feilds use QFT in many ways as well. 
+\noindent \textit{In what situations is QFT not quite enough? Where does it fail?}\\\\
+"Quantum field theory, which was born just fifty years ago from the marriage of quantum mechanics with relativity, is a beautiful but not very robust child." - Weinberg
+\\\\
+Divergences, renormalization
+%Strongly coupled situations still rely on QFT, with some added complexity. Lattice QCD has proved an invaluable tool in static non-purturbative calculatoins. AdS/CFT, although relatively new, has proven useful in dynamical non-purturbative QCD. 
+
+
+%CFT's. Physical?? 
+\section{Generalizing}
+First what is a feild? and what is it's conjugate momentum density?
+
+\section{Locality}
+
+QFT preserves locality, which dictates that two feilds separated in space but not in time cannot interact. The following Lagrangian therefore would not be possible, as $\phi(\vec{x})$ is coupling directly to $\phi(\vec{y})$:
+
+\begin{equation}
+\begin{split}
+L=\int d^3x d^3y \phi(\vec{x}) \phi(\vec{y})\\
+\, \label{eq:first-equation}
+\end{split}
+\end{equation}
+
+\noindent Mathematically, however, the product of two feilds that are not spatially seperated (i.e. $\vec{x}=\vec{y}$) is problematic as well. 
+\\\\
+"From the mathematical point of view, the problem of divergences is rooted in the fact that the theory of distributions is a purely linear theory, in the sense that the product of two distributions cannot consistently be defined (in general),"\\
+\url{https://en.wikipedia.org/wiki/Causal_perturbation_theory}
+\\\\
+"Even such an apparently elementary operation as the multiplication of two generalized functions is, in general, meaningless. We wish to stress that this fact is very closely connected with the appearance of the so-called 'divergences' in quantum field theory"\\
+\url{http://www.mathunion.org/ICM/ICM1958/Main/icm1958.0019.0032.ocr.pdf}
+
+
+\section{Field Theory Equations of Motion}
+QFT uses an adaptation of the established procedures of Lagrangian mechanics for use with fields. In field theory the Lagrangian ($L$) describes the dynamics of the system through including the Lagrangian density. This is necessary as a feild is defined at every point in space-time, giving the field an infinite number of degrees of freedom. This is a defining shift from the finite number of degrees of freedom for a given particle in Lagrangian mechanics. The Lagrangian density ($\Lagr$), which is also sometimes confusingly referred to as the "Lagrangian" as well, is defined in the following way:
+
+\begin{equation}
+\begin{split}
+L(t)= \int \Lagr(\phi,\partial_{\mu}\phi) \ d^3 x
+%g_{\alpha,\beta}(\sigma) \longrightarrow \Omega^2(\sigma)  %g_{\alpha,\beta}(\sigma)
+\, \label{eq:first-equation}
+\end{split}
+\end{equation}
+
+\noindent The action is defined in the usual way.
+
+\begin{equation}
+\begin{split}
+S = \int L \ dt 
+\, \label{eq:second-equation}
+\end{split}
+\end{equation}
+
+\noindent Using equation (1) we now have:
+
+\begin{equation}
+\begin{split}
+S = \int dt \int \Lagr(\phi,\partial_{\mu}\phi) \ d^3 x = \int \Lagr(\phi,\partial_{\mu}\phi) \ d^4 x\\
+\, \label{eq:third-equation}
+\end{split}
+\end{equation}
+
+\noindent To obtain the equations of motion, we will use the principle of least action. \\
+
+\begin{figure}[h]
+\includegraphics[angle=0,width=0.28\textwidth]{Least_action_principle.png}
+\caption{Different paths, with fixed end points, $q(t)$ are drawn out in configuration space. Least action is when some path $q(t)$ perturbed by $\delta q$ leaves the action stationary, i.e. $\delta S = 0$(wiki ref) }
+\label{fig:LeastAction}
+\end{figure}
+
+We are looking for a function, $ \phi(\vec{x},t)$, that minimizes or maximizes the functional, $S[\phi(\vec{x},t)]$. Using the variational principle to find these extrema will tell us which path the system will take.
+
+\begin{equation}
+\begin{aligned}
+\frac{\delta S}{\delta \phi} = \int d^4 x \frac{\partial \Lagr}{\partial \phi} \frac{\delta \phi}{\delta \phi} + \frac{\partial \Lagr}{\partial(\partial_\mu \phi)} \frac{\delta(\partial_\mu \phi)}{\delta \phi}
+\\\\
+ \delta S = \int d^4 x \ \bigg[ \normalfont \frac{ \partial \Lagr}{ \partial \phi} \delta \phi+\frac{ \partial \Lagr}{ \partial (\partial_\mu \phi) } \delta (\partial_\mu \phi)\bigg]\\
+\, \label{eq:fourth-equation}
+\end{aligned}
+\end{equation}
+
+\noindent Examining the second term on right hand side, first note that partial derivatives commute:
+
+\begin{equation}
+\begin{split}
+\frac{ \partial \Lagr}{ \partial (\partial_\mu \phi) } \delta (\partial_\mu \phi) = \frac{ \partial \Lagr}{ \partial (\partial_\mu \phi) }  \partial_\mu (\delta \phi) \\
+\, \label{eq:fifth-equation}
+\end{split}
+\end{equation}
+
+\noindent Expansion by the product rule contains Eq. \ref{eq:fifth-equation} on the RHS in the following:
+
+\begin{equation}
+ \partial_\mu (\frac{ \partial \Lagr}{ \partial (\partial_\mu \phi) }   \delta \phi) = \partial_\mu (\frac{ \partial \Lagr}{ \partial (\partial_\mu \phi) })  \delta \phi + \frac{ \partial \Lagr}{ \partial (\partial_\mu \phi) }  \partial_\mu (\delta \phi) \\\\
+\label{eq:sixth-equation}
+\end{equation}
+\
+
+
+
+
+\noindent Substitution of Eq. \ref{eq:sixth-equation} into Eq. \ref{eq:fourth-equation} gives:
+
+\begin{equation}
+\int d^4 x \ [\frac{ \partial \Lagr}{ \partial \phi} \delta \phi+\partial_\mu (\frac{ \partial \Lagr}{ \partial (\partial_\mu \phi) }   \delta \phi) - \partial_\mu (\frac{ \partial \Lagr}{ \partial (\partial_\mu \phi) })  \delta \phi]\\
+\, 
+\label{eq:seventh-equation}
+\end{equation}
+
+\
+
+
+In this formulation we are keeping the end points fixed, which means that $\delta \phi(\vec{x},t_1)= \delta \phi(\vec{x},t_2)=0$. In addition any $\delta \phi(\vec{x},t)$ evaluates to zero at spatial infinity. Therefore, the boundary term in Eq. 7 (second term on RHS) evaluates to zero.\\
+
+
+
+\noindent Setting $\delta S = 0$ and condensing, now Eq. 7 yeilds:
+
+\begin{equation}
+\begin{split}
+0= \int d^4 x \ \bigg[\frac{ \partial \Lagr}{ \partial \phi} - \partial_\mu (\frac{ \partial \Lagr}{ \partial (\partial_\mu \phi) })\bigg]  \delta \phi 
+\, \label{eq:eigth-equation}
+\end{split}
+\end{equation}
+\\
+\noindent Out of which falls the Euler-Lagrange equation of motion:
+ 
+\begin{equation}
+\begin{split}
+0=  \partial_\mu \bigg(\frac{ \partial \Lagr}{ \partial (\partial_\mu \phi) }\bigg) - \frac{ \partial \Lagr}{ \partial \phi}
+\, \label{eq:ninth-equation}
+\end{split}
+\end{equation}
+
+\subsection{Lagrangian for a Scalar Field $\phi(\vec{x},t)$}
+\noindent If we put the following Lagrangian\\
+\begin{equation}
+\begin{aligned}
+\Lagr &= \frac{1}{2} \partial_\mu \phi \partial^\mu \phi - \frac{1}{2} m^2 \phi^2\\
+\\
+ &= \frac{1}{2} \eta^{\mu\nu} \partial_\mu \phi \partial_\nu \phi - \frac{1}{2} m^2 \phi^2 \\
+\\
+&= \frac{1}{2} [-\dot{\phi}^2 + (\partial_x \phi)^2+(\partial_y \phi)^2+(\partial_z \phi)^2] - \frac{1}{2} m^2 \phi^2\\
+\\
+&= \frac{1}{2} [-\dot{\phi}^2 + \nabla \phi  \cdot \nabla \phi] - \frac{1}{2} m^2 \phi^2\\
+\, \label{eq:tenth-equation}
+\end{aligned}
+\end{equation}
+
+\noindent into the Euler-Lagrange Equation, we will get the Klein-Gordon Equation, as shown below. One benefit to the Klein-Gordon equation over the Schrodenger equation is that it is a relativistic equation of motion. This can easily be identified in each equation by examing how the space and time components scale with respect to one another. In the Schrodenger equation, 
+
+\begin{equation}
+\begin{split}
+i \hbar \frac{\partial \Psi}{\partial t} = \frac{\hbar}{2 m} \nabla^2 \Psi
+\, \label{eq:11}
+\end{split}
+\end{equation}
+\\
+the time component is linear and the spatial component is quadratic, as they do not scale in the same way this equation can't be relativistic. In the Klein-Gordon equation we will see that the both the time and spatial derivatives are quadratic, showing that they scale the same and the equation is indeed relativistic.
+
+To obtain the Klein-Gordon equation we begin with the Lagrangian for a scalar field above and put it into the Euler-Lagrange equation. We split it up by first taking the derivative with respect to $\phi$:
+\begin{equation}
+\frac{\partial \Lagr}{\partial \phi} = \frac{\partial \big[\normalfont\frac{1}{2} [-\dot{\phi}^2 + (\partial_x \phi)^2+(\partial_y \phi)^2+(\partial_z \phi)^2] - \frac{1}{2} m^2 \phi^2\big]\normalfont}{\partial \phi} =-m^2 \phi
+\, 
+\label{eq:12}
+\end{equation}
+\\
+\noindent Next, when determining the derivative with respect to $\partial_\mu \phi$ we 
+can break it up in the following way:
+%must remember 
+ %to use the product rule, that $\eta^{\mu\nu}\partial_\nu=\partial^\mu$ and that $\eta^{\mu\nu}\eta_{\mu\nu}=1$, as well as 
+%the fact that the indices are dummy indices and can be chosen to be anything: 
+
+\begin{equation}
+\begin{split}
+  \partial_\mu \bigg(\frac{ \partial \Lagr}{ \partial (\partial_\mu \phi) }\bigg)
+\rightarrow   \partial_t \bigg(\frac{ \partial \Lagr}{ \partial ( \dot{\phi}) }\bigg) + \nabla \bigg(\frac{ \partial \Lagr}{ \partial ( \nabla\phi) }\bigg)
+\, \label{eq:13}
+\end{split}
+\end{equation}
+
+\noindent Where
+
+\begin{equation}
+\begin{split}
+\partial_t \bigg(\frac{ \partial \Lagr}{ \partial ( \dot{\phi}) }\bigg) = - \ddot{\phi}
+\, \label{eq:14}
+\end{split}
+\end{equation}
+\noindent and
+\begin{equation}
+\begin{split}
+\nabla \bigg(\frac{ \partial \Lagr}{ \partial ( \nabla\phi) }\bigg) = \nabla^2 \phi \\
+\, \label{eq:15}
+\end{split}
+\end{equation}
+
+
+%\begin{equation}
+%\begin{split}
+%\frac{\partial \Lagr}{\partial (\partial_\mu \phi)} = \frac{\partial \big[\frac{1}{2} \eta^{\mu\nu} \partial_\mu \phi \partial_\nu \phi - \frac{1}{2} m^2 \phi^2\big]}{\partial (\partial_\mu \phi)} \\
+%\\ 
+%=\frac{1}{2} \bigg[ \frac{\partial ( \eta^{\mu\nu} \partial_\mu \phi \partial_\nu \phi)}{\partial (\partial_\mu \phi)} + \frac{\partial ( \eta^{\mu\nu} \partial_\mu \phi \partial_\nu \phi)}{\partial (\partial_\nu \phi)}\bigg]\\
+%\\
+%=\partial^\mu \phi
+%\, \label{eq:twelth-equation}
+%\end{split}
+%\end{equation}
+
+%\begin{equation}
+%\begin{split}
+%\frac{\partial \Lagr}{\partial (\partial_\mu \phi)} = \frac{\partial \big[\normalfont\frac{1}{2} \partial_\mu \phi \partial^\mu \phi - \frac{1}{2} m^2 \phi^2\big]\normalfont}{\partial (\partial_\mu \phi)} \\
+%\\ 
+%=\frac{1}{2} \bigg[ \frac{\partial ( \partial_\mu \phi)}{\partial (\partial_\mu \phi)} \partial^\mu \phi + \partial_\mu \phi \frac{\partial (\partial^\mu \phi)}{\partial (\partial_\mu \phi)}\bigg]\\
+%\\
+%=\frac{1}{2} \bigg[ \frac{\partial ( \partial_\mu \phi)}{\partial (\partial_\mu \phi)} \partial^\mu \phi + \eta^{\mu\nu}\eta_{\mu\nu} \partial^\nu \phi \frac{\partial (\partial_\nu \phi)}{\partial (\partial_\nu \phi)}\bigg]\\
+%\\
+%=\partial^\mu \phi
+%\, \label{eq:twelth-equation}
+%\end{split}
+%\end{equation}
+
+\noindent Now putting this all back into the Euler-Lagrange equation,
+
+\begin{equation}
+\begin{split}
+ \partial_\mu \bigg(\frac{ \partial \Lagr}{ \partial (\partial_\mu \phi) }\bigg)-\frac{ \partial \Lagr}{ \partial \phi} \\
+\\
+=  \partial_t \bigg(\frac{ \partial \Lagr}{ \partial ( \dot{\phi}) }\bigg) + \nabla \bigg(\frac{ \partial \Lagr}{ \partial ( \nabla\phi) }\bigg) - \frac{ \partial \Lagr}{ \partial \phi}\\
+\\
+= -\ddot{\phi}+\nabla^2\phi +m^2\phi=  \partial_\mu \partial^\mu \phi + m^2\phi =0
+\, \label{eq:16}
+\end{split}
+\end{equation}
+\\
+\noindent gives the Klein-Gordon equation.
+\\
+\\
+\noindent One might also work with indice notion, using the product rule:
+
+\begin{equation}
+\begin{split}
+\frac{\partial \Lagr}{\partial (\partial_\gamma \phi)} = \frac{\partial \big[\frac{1}{2} \eta^{\mu\nu} \partial_\mu \phi \partial_\nu \phi - \frac{1}{2} m^2 \phi^2\big]\normalfont}{\partial (\partial_\gamma \phi)} \\
+\\ 
+=\frac{1}{2} \bigg[ \eta^{\mu\nu} \partial_\nu \phi \frac{\partial ( \partial_\mu \phi)}{\partial (\partial_\gamma \phi)} + \eta^{\mu\nu}\partial_\mu \phi \frac{\partial (\partial_\nu \phi)}{\partial (\partial_\gamma \phi)}\bigg]\\
+\\
+=\frac{1}{2} \bigg[\partial^\mu \phi \ \delta_\mu^\gamma + \partial^\nu \phi \ \delta_\nu^\gamma \bigg]
+=\partial^\gamma \phi\\
+\\
+\end{split}
+\end{equation}
+\noindent Which combining with Eq. \ref{eq:12} and Eq. \ref{eq:ninth-equation}  also gives \\
+\begin{equation}
+\begin{split}
+ \partial_\gamma \bigg(\frac{ \partial \Lagr}{ \partial (\partial_\gamma \phi) }\bigg)-\frac{ \partial \Lagr}{ \partial \phi} \\
+\\
+=  \partial_\mu \partial^\mu \phi + m^2\phi =0\\
+\, \label{eq:17}
+\end{split}
+\end{equation}
+
+
+
+The energy-momentum 4-vector product is an invariant quantity that can also motivate us in obtaining the Klein-Gordon equation.\\
+
+\noindent From (in natural units),
+
+\begin{equation}
+\begin{split}
+p^\mu p_\mu=E^2-\vec{p}\cdot\vec{p}=m^2
+\, \label{eq:18}
+\end{split}
+\end{equation}
+
+if we substitute the operators from Quantum mechanics for energy ($E \rightarrow i \frac{\partial}{\partial t}$) and momentum ($\vec{p} \rightarrow - i \nabla$), we get:
+
+\begin{equation}
+\begin{split}
+\bigg[i^2\frac{\partial^2}{\partial^2 t}-i^2 \nabla\cdot\nabla\bigg]\phi=m^2\phi\\
+\\ (\Box - m^2)\phi=0
+\, \label{eq:19}
+\end{split}
+\end{equation}
+
+See Ryder page 27.
+
+%\begin{equation}
+%\begin{split}
+%p^\mu=(E,\vec{p}) \ \ and \ \ p_\mu=(E,-\vec{p})
+%\, \label{eq:15}
+%\end{split}
+%\end{equation}
+
+\subsection{Lagrangian for Electromagnetism}
+\noindent For an Ablelian scalar gauge field,
+\begin{equation}
+\begin{split}
+\Lagr_{EM} = - \frac{1}{4} F_{\mu\nu}F^{\mu\nu}\\
+\\
+= -\frac{1}{2} (\partial_\mu A_\nu)(\partial^\mu A^\nu) + \frac{1}{2} (\partial_\mu A^\mu)^2\\
+\, \label{eq:20}
+\end{split}
+\end{equation}
+\noindent For the non-abelian case, we will need to add a commutator to the Lagrangian: 
+
+\begin{equation}
+\begin{split}
+\Lagr_{EM_{NA}}= -\frac{1}{2} (\partial_\mu A_\nu)(\partial^\mu A^\nu) + \frac{1}{2} (\partial_\mu A^\mu)^2 + [A_\mu,A^\mu]\\
+\, \label{eq:21}
+\end{split}
+\end{equation}
+
+\noindent Where the field strength tensor is defined as: \vspace{3mm}
+ \begin{equation}
+\begin{split}
+ F^{\mu\nu}=\partial^\mu A^\nu - \partial^\nu A^\mu =\begin{bmatrix}
+    0       & -E_x & -E_y & -E_z  \\
+    E_x       & 0 & -B_z & B_y  \\
+    E_y       & B_z & 0 & -B_x \\
+    E_z      & -B_y & B_x & 0
+\end{bmatrix}\\\\
+clearly \ anti-symmetric \ F_{\mu\nu}=-F_{\nu\mu }\\\\
+and \ F_\mu^\mu=0
+\, \label{eq:22}
+\end{split}
+\end{equation}
+ 
+\section{Lagrangians for Fermions}
+
+SHOW THE PROBS DONT ADD UP EXAMPLE
+
+The first Lagrangian for the Fermion that we will discuss is one that does not interact with the electromagnetic feild (i.e. no charge). We will also build the $\gamma^\mu$ out of the Pauli matrices, which is referred to as Weyl or Chiral representation.
+
+\begin{equation}
+\begin{split}
+S=\int d^4 x \bar{\Psi}(i \gamma^\mu \partial_\mu - m)\Psi\\
+\mu=0,1,2,3\\
+\\
+\gamma^0 
+=\begin{bmatrix}
+    0    &    0    &    1    &    0    \\
+    0    &    0    &    0    &    1    \\
+    1    &    0    &    0    &    0    \\
+    0    &    1    &    0    &    0
+\end{bmatrix} 
+=\begin{bmatrix}
+    0_{2x2}                    & \mathbb{1}_{2x2}  \\
+    \mathbb{1}_{2x2}    &    0_{2x2}    
+\end{bmatrix} 
+=\begin{bmatrix}
+    0                    & \mathbb{1}  \\
+    \mathbb{1}    &    0    
+\end{bmatrix} 
+\\
+\\\\
+\gamma^i 
+=\begin{bmatrix}
+    0_{2x2}                    & _{PauliMatrix}  \\
+    - \tiny _{PauliMatrix}    &    0_{2x2}    
+\end{bmatrix} 
+=\begin{bmatrix}
+    0                    & \sigma_i \\
+    -\sigma_i    &    0    
+\end{bmatrix} \\\\
+i=1,2,3\\
+\\\\
+\Psi \rightarrow 
+\begin{bmatrix}
+    e^-  \uparrow        &   \\
+    e^-  \downarrow    &   \\
+    e^+ \uparrow        &    \\
+    e^+ \downarrow       &    
+\end{bmatrix} \\
+\\
+\\
+\bar{\Psi} = \Psi^\dagger \gamma^0\\
+\, \label{eq:23}
+\end{split}
+\end{equation} \\
+\indent Where $\Psi$ encapsulates the four degrees of freedom between the particle, it's antiparticle and either being spin up or spin down. This was not entirely expected. The need for antiparticle degrees of freedom falls out of the need for a relativistic equation of quantum mechanics that could handle fermions. The Klein-Gordon equation breaks down in the sense that probabilities do not sum to one and are measurements rendered nonsensical. These issues can be dealt with for scalar fields with the Klein-Gordon equation, however, for spin $\frac{1}{2}$ fields a new Lagrangian had to be developed.
+
+Having a quadratic derivative had proven to be problematic (an issue for gauge invariance and including a mass term). Following the same line of reasoning to derive the Klien-Gordon equation from the four-momentum as shown previously... (ref) \\\\
+ Dirac proposed to essentially take the square root of $E^2=\vec{p}^2 +m^2$ and begin from there. In the most simple terms, he was searching for some function F:
+
+\begin{equation}
+\begin{split}
+\partial_x^2+\partial_y^2+\partial_z^2-\partial_t^2=F^2\\
+\, \label{eq:21}
+\end{split}
+\end{equation}
+
+\noindent To try to find this one might start with,
+
+\begin{equation}
+\begin{split}
+F^2=(A \partial_x+B \partial_y+C \partial_z+i D \partial_t)^2\\
+\\
+\end{split}
+\end{equation}
+Multiplying this out
+\begin{equation}
+\begin{split}
+F^2=\bigg[A^2 \partial_x^2+B^2 \partial_y^2+C^2 \partial_z^2- D^2 \partial_t^2 \bigg] \\\\+\bigg[ A \partial_x B \partial_y + \text{more cross terms....} \bigg]\\
+\, \label{eq:21}
+\end{split}
+\end{equation}
+\\
+we see that the first part in brackets works out perfectly, so long as our choice $A^2=B^2=C^2=D^2$ are identity terms. Now we just need to have the cross terms vanish to use this. To make the cross terms vanish we need to use 4x4 matrices with conditions like $AB+BA=0$. This also means that $A^2=B^2=C^2=D^2=\mathbb{1}$. This was the motivation for using the gamma matrices in the Dirac equation and the reason that they anti-commute. This also requires $\Psi$ to have 4 components, and in turn revealed the need for anti-particles through the formulation of a relativistic equation of motion for Fermions.\\
+
+\noindent The Lagrangian for charged Fermions is:
+
+\begin{equation}
+\begin{split}
+\Lagr_D= i \bar{\Psi} \gamma^{mu} (\partial_\mu + i e A_\mu) \Psi - m \bar{\Psi} \Psi \\\\
+\end{split}
+\end{equation}
+
+\noindent For a fermion field interacting with an electromagnetic field the Lagrangian would be given by:\\
+\begin{equation}
+\begin{split}
+\Lagr=\Lagr_{EM}+\Lagr_D
+\\
+= -\frac{1}{4} F_{\mu\nu}F^{\mu\nu} + i \bar{\Psi} \gamma^{mu} (\partial_\mu + i e A_\mu) \Psi - m \bar{\Psi} \Psi
+\end{split}
+\end{equation}
+
+
+
+
+
+\section{Symmetries}
+
+Symmetries of the system play a important role in all physical systems. Noethers theorem tells us that each symmetry of a system corresponds to a conserved quantity. We can also break symmetry. Doing this in the Lagrangian is simply called symmetry breaking, however, if the Lagrangian holds some symmetry that breaks after the equations of motion have been obtained using that Lagrangian, we call this spontaneous symmetry breaking. This is how the Higgs mechanism works to give particles mass. When a mass term is forbidden in a Lagrangian due to the need for gauge invariance, finding the mass later as manifesting in the equations of motion is the only way to give that particle mass. The Higgs mechanism will be discussed in more detail later. *give a brief def if supersymmetry
+
+\subsection{Translational Invariance}
+Moving every point in space by the same amount in the same direction.
+\subsection{Rotational Invariance}
+Rotating all points in space by some angle about the same origin. This symmetry implies the conservation of angular momentum.
+\subsection{Lorentz Invariance}
+Changing from one coordinate systems to another that is moving with constant velocity with respect to the original coordinate system.
+\begin{figure}[h]
+\includegraphics[angle=0,width=0.28\textwidth]{Lorentz.png}
+\caption{Will draw my own... }
+\label{fig:Lorentz}
+\end{figure}
+
+\subsection{Gauge Invariance}
+
+Gauge invariance is thought to be expected in all fundamental interactions (reference...expand on why). Gauge symmetry leaves the lagrangian invariant upon changing the gauge field in the following way,
+
+ \begin{equation}
+\begin{split}
+A^\mu \rightarrow A^{'\mu} = A^\mu + \partial^\mu x\\
+\, \label{eq:24}
+\end{split}
+\end{equation}
+
+\noindent Where an example of a U(1) gauge field from electromagnetism is:
+
+\begin{equation}
+\begin{split}
+A^\mu = (\Phi, \vec{A})\\
+\end{split}
+\end{equation}
+
+\noindent Where $\Phi$ is the scalar potential and $\vec{A}$ is the vector potential. \\
+
+Photons cannot have mass due to gauge invariance. Performing a gauge transformation on a mass term for the scalar electromagnetic field shows where this breaks down.
+
+\begin{equation}
+\begin{aligned}
+\Lagr &= -\frac{1}{4} F_{\mu\nu}F^{\mu\nu} - m^2 A_\mu A^\mu\\
+\\
+&=-\frac{1}{4} (\partial_\mu A_\nu - \partial_\nu A_\mu)(\partial^\mu A^\nu-\partial^\nu A^\mu) - m^2 A_\mu A^\mu\\
+\\
+n&ow \  sending \ \ \ A^\mu \rightarrow A^{'\mu} = A^\mu + \partial^\mu \chi \\
+\\ &=-\frac{1}{4} (\partial_\mu (A_\nu + \partial_\nu \chi) - \partial_\nu (A_\mu + \partial_\mu \chi))(\partial^\mu (A^\nu + \partial^\nu \chi)-\partial^\nu (A^\mu + \partial^\mu \chi)) - m^2 (A_\mu + \partial_\mu \chi) (A^\mu + \partial^\mu \chi)\\
+\\
+&=-\frac{1}{4} (\partial_\mu A_\nu - \partial_\nu A_\mu + \partial_\mu \partial_\nu \chi - \partial_\nu \partial_\mu \chi))(\partial^\mu A^\nu -\partial^\nu A^\mu +\partial^\mu \partial^\nu \chi - \partial^\nu \partial^\mu \chi)) \\\\
+&\ \ \ \ - m^2 (A_\mu A^\mu + A_\mu \partial^\mu \chi +\partial_\mu \chi A^\mu +\partial^\mu \chi \partial_\mu \chi)\\
+\\
+&=-\frac{1}{4} (\partial_\mu A_\nu - \partial_\nu A_\mu)(\partial^\mu A^\nu-\partial^\nu A^\mu)- m^2 (A_\mu A^\mu + A_\mu \partial^\mu \chi +\partial_\mu \chi A^\mu +\partial^\mu \chi \partial_\mu \chi)\\\\
+\end{aligned}
+\end{equation}
+Although the field strength tensor is invariant under the above gauge  transformation, clearly the mass term is not.\\
+
+%(A^\nu + \partial^\nu \chi)
+
+We will now examine the Lagrangian for a fermion field under gauge transformations. Below it will become clear that if we did not have a charged feild (i.e. the $i e A_\mu$ term), guage symmetry would not be preserved. When you see the derivative it will always be with this charged term. The two together are called the covariant derivative.\\
+\begin{equation}
+\begin{split}
+D_\mu = \partial_\mu + i e A_\mu\\\\
+\end{split}
+\end{equation}
+ Under a U(1) transformation this new form of the derivative will transform with the fermion feild in the same way that the fermion field would transform on it's own.
+
+\begin{equation}
+\begin{split}
+D'_\mu \Psi' = (\partial_\mu + i e A_\mu + i \partial_\mu \phi) e^{-i \phi} \Psi= e^{i \phi} D_\mu \Psi \\\\
+\end{split}
+\end{equation}
+
+More explicitly, we will see that a gauge transformation of $A_\mu$ is necessary following the gauge transformation $\Psi \rightarrow \Psi'=e^{i \phi(x)}\Psi$, which happens to be a phase transformation on the fermion field.
+
+\begin{equation}
+\begin{aligned}
+&\Lagr_D= i \bar{\Psi} \gamma^{\mu} (\partial_\mu + i e A_\mu) \Psi - m \bar{\Psi} \Psi 
+\\\\\\
+\Lagr_D(\Psi \rightarrow \Psi'=e^{i \phi(x)}\Psi) &
+\\\\
+ &= i e^{-i \phi(x)}\bar{\Psi} \gamma^{\mu} (\partial_\mu + i e A_\mu) e^{i \phi(x)}\Psi - m e^{-i \phi(x)}\bar{\Psi} e^{i \phi(x)}\Psi\\ \\
+&=i e^{-i \phi(x)}\bar{\Psi} \gamma^{\mu} (\partial_\mu (e^{i \phi(x)}\Psi) + i e A_\mu e^{i \phi(x)}\Psi )- m \bar{\Psi} \Psi
+\\\\
+&Note: \ \partial_\mu (e^{i \phi(x)} \Psi) = e^{i \phi(x)} i \Psi \partial_{\mu} \phi(x) + e^{i \phi(x)} \partial_{\mu} \Psi\\\\
+ &= i \bar{\Psi} \gamma^{\mu} (\partial_\mu + i \partial_
+ \mu \phi(x)+i e A_\mu) \Psi - m \bar{\Psi}\Psi\\\\
+\end{aligned}
+\end{equation}
+
+After the phase transformation we have picked up an extra term. Doing a subsequent gauge transformation will leave the function invariant.
+
+\begin{equation}
+\begin{split}
+A_\mu \rightarrow A'_\mu = A_\mu + \partial_\mu \chi = A_\mu - \frac{1}{e} \partial_\mu \phi\\
+\\
+\Lagr= i \bar{\Psi} \gamma^{\mu} (\partial_\mu + i \partial_
+ \mu \phi(x)+i e (A_\mu - \frac{1}{e} \partial_\mu \phi)) \Psi - m \bar{\Psi}\Psi\\
+ \\
+ = i \bar{\Psi} \gamma^{\mu} (\partial_\mu + i e A_\mu) \Psi - m \bar{\Psi} \Psi \\\\
+ \end{split}
+\end{equation}
+
+\noindent Which is clearly what we started with. 
+
+\noindent With the use of the covariant derivative this is much easier to see:
+
+\begin{equation}
+\begin{split}
+\Lagr_D = i \bar{\Psi} \gamma^\mu D_\mu \Psi - m \bar{\Psi} \Psi\\ \\
+now \ \Psi \rightarrow \Psi' \ and \ D_\mu \rightarrow D'_\mu \\\\
+ = i \bar{\Psi}' \gamma^\mu D'_\mu \Psi' - m \bar{\Psi}' \Psi'\\\\
+=i e^{-i \phi} \bar{\Psi} \gamma^\mu e^{i \phi} D_\mu \Psi - m e^{-i \phi} \bar{\Psi} e^{i \phi} \Psi \\\\
+= i \bar{\Psi} \gamma^\mu D_\mu \Psi - m \bar{\Psi} \Psi\\\\
+\end{split}
+\end{equation}
+
+
+%\subsection{U(1), SU(2), SU(3)}
+
+\section{Groups}
+
+\noindent Conditions that a group must meet: \\\\
+\indent Closure - if two elements are in the group G then the product must be as well \\    
+
+\begin{equation} 
+\begin{split}
+for \ a \ \pmb \epsilon \ G \ , \  b \ 
+\pmb \epsilon \ G \ \ \ \ 
+a \cdot b = 
+c \
+\pmb \epsilon \ G \\ 
+\end{split} 
+\end{equation}
+
+\indent Identity\\
+\indent Inverse\\
+\indent Associative\\
+
+For Abelian groups the elements must also be commutative.
+
+
+\subsection{U(1)}
+
+From the unitary group U(n) (complex unitary nxn matrices), the U(1) group is known as a circle group. It is a Lie group of n=1 dimension. The transformation is parameterized by a circle, as the phase transformation will be the same in intervals of $2 \pi$, (i.e. $e^{i \phi} = e^{i (\phi + 2 \pi)}$. To see whether or not a transformation belongs to the U(1) group, one must examine a series of rules.
+
+First we would examine whether or not the elements for a group. Then, we would examine whether or not $U^\dagger U=1$. As an example, let us examine this for the local gauge transformation given by $e^{i \phi}$: \\
+
+*note that elements of the U(1) group are also going to be abelian.
+
+If in the transformation above $\phi$ was a constant, the transformation would be considered a global U(1) transformation.\\
+\\
+We saw that the Lagrangian for the fermion interacting with the electromagnatic feild was invariant under gauge transformations. The gauge transformation for that Lagrangian follows the rules of the U(1) group, as shown above. In addition the transformations commute. This makes QED an abelian U(1) guage theory. 
+
+
+\subsection{SU(N)}
+
+The special unitary group of NxN matrices. The "special" stands for the fact that the matrices in this group must also have determinant 1. SU(2) describes the weak interaction. SU(3) describes the strong interaction, QCD.
+
+De Broglie wavelength 
+Compton Wavelength
+
+Hilbert Space
+
+--Look at E and M description -- reference??
+
+Gauge theory 
+
+--wiki quote: a type of field theory in which the lagrangian is invariant under a continuous group of local transformations.
+
+Continuous group: elements that depend on continous parameters such that a small change in the factors of a product affect that product and it meets the standards of a group
+
+Global symmetries: all spacetime
+
+local symmetries: parameterized by coordinates
+
+lagrangian in flat space vs curved
+
+Higgs mechanisim
+
+Unitary groups
+
+TENSOR - invariant under coordinate transformations
+
+
+\section{Canonical Quantization}
+
+In quantum mechanics, the way to solve equations to describe a quantum system necessitates promoting q and it's conjugate momentum p to operators as well as imposing commutation relations. 
+
+\begin{equation}
+\begin{aligned}
+[q_i,p_j][q_i,p_j] &= i \delta_{ij} \\
+[q_i,q_j]&=[p_i,p_j]=0
+\end{aligned}
+\end{equation}
+
+
+It just works. It fixes the equations to describe a "quantized" systems. So when it comes to feild theory we proceed in the same fashion. We promote the feild $\phi(x)$ and it's conjugate momentum density $\pi(x)$ to an operator and impose commutation relations on them in the following way:
+
+ \begin{equation}
+\begin{aligned}
+[q_i,p_j][\phi(\vec{x}),\pi(\vec{y})] &= i \delta^3(\vec{x}-\vec{y}) \\
+[\phi(\vec{x}),\phi(\vec{y})]&=[\pi(\vec{x},\pi(\vec{y}]=0
+\end{aligned}
+\end{equation}
+
+
+
+\section{References}
+
+\noindent
+%\url{http://www.sns.ias.edu/~malda/sciam-maldacena-3a.pdf}
+\url{https://en.wikipedia.org/wiki/Principle_of_least_action}
+
+\section{Textbook Problems}
+
+\subsection{Peskin 2.2}
+
+
+
+\end{document}
+
